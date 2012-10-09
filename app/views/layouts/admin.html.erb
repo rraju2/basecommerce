@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Darseen</title>
+  <%= stylesheet_link_tag "bootstrap" %>
+  <%= stylesheet_link_tag "datepicker" %>
+  <%= stylesheet_link_tag "admin" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-datepicker" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
+  <%= javascript_include_tag "http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="admin">
+	    <div class="admin_container">
+            <%= tabs_tag :open_tabs => {:id => "admin_tabs", :class => "nav nav-tabs"} do |tab| %>
+					  <%= tab.home 'Wellcom', admin_root_path %>
+					  <%= tab.products 'Products', admin_products_path %>
+					  <%= tab.categories 'Categories', admin_categories_path %>
+					  <%= tab.orders 'Orders', '#' %>
+					  <%= tab.customers 'Customers', '#' %>
+					  <%= tab.settings 'Settings', '#' %>
+    		<% end %>
+			<div class="content">
+				 <%= yield %>
+			</div>
+	    </div>
+    </div>
+	<script>
+	    jQuery.noConflict();
+        $('#admin_tabs li.current span').replaceWith('<a>'+$('#admin_tabs li.current span').text()+'</a>');
+		$('#admin_tabs li.current').removeClass().addClass('active');
+	    $("#startdate,#enddate").datepicker()
+	</script>
+</body>
+</html>

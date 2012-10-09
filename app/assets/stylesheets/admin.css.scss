@@ -1,0 +1,44 @@
+
+body{background:#eee;}
+.admin .admin_container{background:#fff;padding:20px; width:1096px; margin:auto;}
+.admin .content{border: 1px solid #EEEEEE; border-radius: 6px 6px 6px 6px; padding: 10px;}
+.admin .span8{width:790px;}
+.admin .span4{width:250px;}
+.admin .float_right{float:right;}
+.admin .p_img img{width:50px;height:50px;}
+.admin .navbar-inner {
+    background-color: #3F9FD9;
+    background-image: -moz-linear-gradient(center top , #369BD7, #369BD7 90%, #61B0DF);
+    background-repeat: no-repeat;
+}
+.admin .navbar-inner {
+    background-color: #50A8DC;
+    background-image: -moz-linear-gradient(center top , #61B0DF, #369BD7);
+    background-repeat: repeat-x;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.admin .navbar .nav > li > a {
+    color: #F5F5F5;
+    float: none;
+    line-height: 19px;
+    padding: 10px 10px 11px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#admin_tabs {font: 14px tahoma,geneva,verdana,sans-serif;}
+#admin_tabs li {background:#0088CC; font-size:17px; margin: 0 2px; border-radius: 6px 6px 0 0;}
+#admin_tabs li a {color:#fff;}	
+#admin_tabs li.active {border-radius: 6px 6px 0 0;}
+#admin_tabs li.active a {color:#000;margin:0px;}
+#admin_tabs li a:hover {margin:0px;border-radius: 6px 6px 0 0;} 
+#product_tabs li a{font-size:17px;}
+
+#products_paginate .pagination span{box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); margin-bottom: 0; margin-left: 0;}
+#products_paginate .pagination span a{border-width: 1px 1px 1px 0;}
+
+.admin_container .content label{font-size: 16px;}

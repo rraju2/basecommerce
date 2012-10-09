@@ -1,0 +1,22 @@
+<div class="fields">
+	<p>
+	  <%= f.label :name, "Name" %>
+	  <%= f.text_field :name %>
+	</p>
+	<p>
+	  <%= f.label :display_type %>
+	  <%= f.select(:display_type , options_for_select([['DropDown List', 1], ['Radio Buttons', 2]])) %>
+	</p>
+	<p>
+	  <%= f.label :default_choise %>
+	  <%= f.number_field :default_choise %>
+	  <!--<%= f.select(:default_choise, options_for_select([['DropDown List', 0], ['Radio Buttons', 1]])) %> -->
+	</p>
+	<%= f.fields_for :product_option_choises do |builder| %>
+	   <%= render 'product_option_choise_fields', :f => builder %>
+	<% end %>
+	<%= link_to_remove_fields "Remove Option", f %>
+	<p><%= link_to_add_fields "Add Option Choise", f, :product_option_choises %></p>
+</div>
+
+

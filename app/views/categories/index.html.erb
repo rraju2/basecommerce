@@ -1,0 +1,31 @@
+<% title "Categories" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Meta Keywords</th>
+    <th>Meta Description</th>
+    <th>Tags</th>
+    <th>Active</th>
+    <th>Deleted At</th>
+  </tr>
+  <% for category in @categories %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= category.description %></td>
+      <td><%= category.image %></td>
+      <td><%= category.meta_keywords %></td>
+      <td><%= category.meta_description %></td>
+      <td><%= category.tags %></td>
+      <td><%= category.active %></td>
+      <td><%= category.deleted_at %></td>
+      <td><%= link_to "Show", category %></td>
+      <td><%= link_to "Edit", edit_category_path(category) %></td>
+      <td><%= link_to "Destroy", category, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Category", new_category_path %></p>

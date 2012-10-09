@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_option_id: 1
+  value: MyString
+  price_modifier_type: 1
+  price_modifier: 9.99
+
+two:
+  product_option_id: 1
+  value: MyString
+  price_modifier_type: 1
+  price_modifier: 9.99

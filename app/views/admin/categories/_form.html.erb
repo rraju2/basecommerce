@@ -1,0 +1,36 @@
+<%= form_for [:admin, @category] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+    <%= f.label :meta_keywords %><br />
+    <%= f.text_field :meta_keywords %>
+  </p>
+  <p>
+    <%= f.label :meta_description %><br />
+    <%= f.text_field :meta_description %>
+  </p>
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.label :deleted_at %><br />
+    <%= f.datetime_select :deleted_at %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

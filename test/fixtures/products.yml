@@ -1,0 +1,19 @@
+one:
+  category_id: 1
+  name: MyString
+  description: MyString
+  image: MyString
+  meta_keywords: MyString
+  meta_description: MyString
+  front_page: false
+  deleted_at: 2012-05-05 22:28:11
+
+two:
+  category_id: 1
+  name: MyString
+  description: MyString
+  image: MyString
+  meta_keywords: MyString
+  meta_description: MyString
+  front_page: false
+  deleted_at: 2012-05-05 22:28:11

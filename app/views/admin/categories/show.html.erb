@@ -1,0 +1,40 @@
+<% title "Category" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @category.description %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= @category.image %>
+</p>
+<p>
+  <strong>Meta Keywords:</strong>
+  <%= @category.meta_keywords %>
+</p>
+<p>
+  <strong>Meta Description:</strong>
+  <%= @category.meta_description %>
+</p>
+<p>
+  <strong>Tags:</strong>
+  <%= @category.tags %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @category.active %>
+</p>
+<p>
+  <strong>Deleted At:</strong>
+  <%= @category.deleted_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_category_path(@category) %> |
+  <%= link_to "Destroy", @category, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", categories_path %>
+</p>

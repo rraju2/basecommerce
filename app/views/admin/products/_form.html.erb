@@ -1,0 +1,76 @@
+<ul id="product_tabs" class="nav nav-pills">
+					<li class="active"><a href="#">General</a></li>
+					<li><a href="#">Options</a></li>
+					<li><a href="#">Properties</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#">Variants</a></li>
+					<li><a href="#">SEO</a></li>
+</ul>
+<script>
+    $('#product_tabs li').click(function (e) {
+			var active_div_name = 'i'+$('#product_tabs li.active a').text();
+			$('#'+active_div_name).hide();
+			$('#product_tabs li.active').removeClass();
+			$(this).addClass('active');
+			$('#i'+$(this).find('a').text()).show();
+	});
+</script>
+<%= form_for [:admin, @product], :html => {:multipart=>true} do |f| %>
+  <%if @product.errors.any? %>
+   <div class="alert alert-error">
+      <%= f.error_messages %>
+   </div>
+  <% end %>
+  <div id="iGeneral">
+	  <p>
+	   <%= f.label :category_id %>  
+	   <%= f.collection_select :category_id, Category.all, :id, :name %>  
+	  </p>
+	  <p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	  </p>
+	  <p>
+		<%= f.label :description %>
+		<%= f.text_area :description, :rows => 3 %>
+	  </p>
+	  <p> 
+	   <%= f.fields_for :product_variants do |builder| %>
+			  <%= render 'variant_fields', :f => builder %>
+	   <% end %>
+	  </p>
+	  <p>
+		 <%= f.file_field :image %>
+	  </p>
+	  <p>
+		<%= f.label :front_page %>
+		<%= f.check_box :front_page %>
+	  </p>
+  </div>
+  <div id="iSEO" style="display:none;">
+	  <p>
+		<%= f.label :meta_keywords %>
+		<%= f.text_field :meta_keywords %>
+	  </p>
+	  <p>
+		<%= f.label :meta_description %>
+		<%= f.text_field :meta_description %>
+	  </p>
+  </div>
+  <div id="iOptions" style="display:none;"> 
+  	  <%= f.fields_for :product_options do |builder| %>
+     	  <%= render 'product_option_fields', :f => builder %>
+	  <% end %>
+	 <p><%= link_to_add_fields "Add Option", f, :product_options %></p>
+  </div>       
+  <div id="iProperties" style="display:none;">
+	  <%= f.fields_for :product_properties do |builder| %>
+     	  <%= render 'product_property_fields', :f => builder %>
+	  <% end %>
+	  <p><%= link_to_add_fields "Add Property", f, :product_properties %></p>
+  </div>
+  <div id="iGallery" style="display:none;">
+	  Gallery
+  </div>
+  <p><%= f.submit "Submit", :class=>"btn btn-large btn-inverse" %></p>
+<% end %>

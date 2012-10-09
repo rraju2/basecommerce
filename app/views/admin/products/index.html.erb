@@ -1,0 +1,81 @@
+  <div class="page-header">
+       <h2>Products<small> - product catalog</small></h2>
+ </div>
+<div class="row">
+   <div class="span8">
+		    <p><%= link_to "New Product", new_admin_product_path, :class=>"btn js-btn" %></p>
+			<% if @products.count > 0 %>
+			<table class="table table-bordered table-striped">
+            <thead class="tbl_blue">
+            <tr>
+                 <th class="nowrap textcenter">Id</th>
+                 <th class="nowrap textcenter">Category</th>
+                 <th class="textright nowrap">Name</th>
+                 <th>Sku</th>
+				 <th>Price</th>
+				 <th>FronPage</th>
+                 <th class="textright nowrap">Active</th>
+				 <th class="textright nowrap">Deleted</th>
+				 <th class="textright nowrap">Created</th>
+				 <th class="textright nowrap">Image</th>
+				 <th class="nowrap textcenter">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+				 <% @products.each do |product| %>
+					 <tr>
+						 <td class="nowrap textcenter"><span class="badge badge-info"><%= product.id %></span></td>
+						 <td class="nowrap textcenter"><%= product.category_name(product.category_id) %></td>
+						 <td class="nowrap textcenter"><%= product.name %></td>
+						 <td class="nowrap"><%= product.master_variant(product.id).sku %></td>
+						 <td class="textcenter nowrap"><span class="badge badge-important"><%= product.master_variant(product.id).price %></span></td>
+						 <td class="nowrap"><%= product.front_page %></td>
+						 <td class="textright nowrap"><%= product.active %></td>
+						 <td class="textright nowrap">
+						       <% if product.deleted_at.nil? then %>
+								   no
+								<% else %>
+								  <%= product.deleted_at %>
+								<% end %>
+						 </td>
+						 <td class="textright nowrap"><%= product.created_at %></td>
+						 <td class="p_img"><%= product.image.present? ? image_tag(product.image) : image_tag('/images/icon_content_unavailable.png') %></td>
+	    				 <td><%= link_to image_tag("/images/edit.png", :border=>0), edit_admin_product_path(product) %></td>
+                         <td><%= link_to image_tag("/images/delete.gif", :border=>0, :class=>"ui-datepicker-trigger"), admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
+					 </tr>
+				<% end %>
+            </tbody>
+           </table>
+				<div id="products_paginate">
+					<%= paginate @products %>
+				</div>
+				<script>
+	                $("#products_paginate span").each(function(index,val){
+					    if($(this).is(".current")){$(this).replaceWith('<li class="active"><a>'+$(this).html()+'</a></li>')}
+                        else{ $(this).replaceWith('<li>'+$(this).html()+'</li>') }
+					});
+	            </script>
+		   <% end %>
+        </div>		   
+		<div class="span4 float_right">
+				<div class="well">
+						<ul class="nav nav-list">
+						   <li class="nav-header">Search Product</li>
+							<form id="myForm" method="post">
+								<div style="width:150px;display: inline-block;">
+									<p><span class="label label-info">Product Name</span><br>
+								<input class="input-xlarge" id="product_name" name="product_name" size="30" value="" style="width:120px;" type="text"><a data-original-title="This Field Only Search Product Name" href="#" rel="tooltip" style="text-decoration:none;">[?]</a>
+								</p>
+								<p><span class="label label-info">From Date</span><br>
+								<input class="xmedium hasDatepicker" id="startdate" name="startdate" size="30" value="" style="width:120px;" readonly="readonly" type="text"><img title="..." alt="..." src="http://sg11.uvsms.net/paapuu/newsystem/assets/images/calendar.gif" class="ui-datepicker-trigger">
+								</p>
+									<p><span class="label label-info">To Date</span><br>
+									<input class="xmedium hasDatepicker" id="enddate" name="enddate" size="30" value="" style="width:120px;" readonly="readonly" type="text"><img title="..." alt="..." src="http://sg11.uvsms.net/paapuu/newsystem/assets/images/calendar.gif" class="ui-datepicker-trigger">
+								</p>
+								<button class="btn-success btn" id="search">Search</button>
+								</div>
+							</form>
+						</ul>
+				</div
+		</div>
+	</div>
